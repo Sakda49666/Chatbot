@@ -25,7 +25,7 @@ function sendMessage() {
 function getBotReply(message) {
   const msg = message.toLowerCase();
 
-  if (msg.includes("แนะนำตัว")) {
+  if (msg.includes("แนะนำตัว") || msg.includes("แนะนำตัวหน่อย") || msg.includes("ช่วยแนะนำตัว") || msg.includes("อยากรู้จัก")) {
     return `สวัสดีครับ ผมชื่อศักดา เป็นนักพัฒนาเว็บสาย Frontend ที่ชื่นชอบการสร้างเครื่องมือช่วยเหลือผู้คนครับ 👨‍💻<br><br>
     สนใจอยากทราบอะไรเพิ่มเติมเกี่ยวกับผมไหม?<br>
     <button>ประสบการณ์</button>
