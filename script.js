@@ -15,20 +15,27 @@ function sendMessage() {
 function getBotReply(message) {
   const msg = message.toLowerCase();
 
-  if (msg.includes("สวัสดี")) {
-    return "สวัสดีครับ ยินดีที่ได้รู้จัก! 😊";
-  }
-  if (msg.includes("ชื่อ") || msg.includes("คุณคือใคร")) {
-    return "ผมชื่อศักดา เป็นนักพัฒนาเว็บสาย Frontend ที่ชื่นชอบการสร้างเครื่องมือที่ช่วยเหลือผู้คนครับ";
-  }
-  if (msg.includes("ทักษะ") || msg.includes("เก่งอะไร")) {
-    return "ผมมีความสามารถด้าน HTML, CSS, JavaScript และกำลังเรียนรู้ GitHub รวมถึงสนใจเทคโนโลยี AI อย่างมากครับ";
-  }
   if (msg.includes("แนะนำตัว")) {
-    return "สวัสดีครับ ผมชื่อศักดา เป็นคนเรียนรู้ไว กระตือรือร้น และรักการสร้างเว็บแอปที่มีประโยชน์ เช่น บอทแชท เว็บไซต์ทำอาหาร และฟีเจอร์ AI ครับ\nดูผลงานเพิ่มเติมได้ที่: https://github.com/sakda49666";
+    return `สวัสดีครับ ผมชื่อศักดา เป็นนักพัฒนาเว็บสาย Frontend ที่หลงให้งานสร้างเว็บแอปและเครื่องมือที่ช่วยเหลือผู้คนครับ 👨‍💻<br><br>
+    คุณสนใจอยากทราบอะไรเกี่ยวกับผมเพิ่มเติมบ้าง?<br>
+    <button onclick="simulateMessage('ประสบการณ์')">ประสบการณ์</button>
+    <button onclick="simulateMessage('ทักษะ')">ทักษะ</button>
+    <button onclick="simulateMessage('สถานศึกษา')">สถานศึกษา</button>`;
   }
 
-  return "ขอโทษครับ ผมยังไม่เข้าใจคำนี้ ลองพิมพ์ว่า 'แนะนำตัว', 'ชื่อ', หรือ 'ทักษะ' ได้เลยครับ!";
+  if (msg.includes("ประสบการณ์")) {
+    return "ผมเคยทำโปรเจกต์ส่วนตัว เช่น เว็บทำอาหาร, เว็บแนะนำสูตร, บอทแชทด้วย HTML/CSS/JS และกำลังศึกษาการใช้ GitHub กับ AI chatbot อยู่ครับ";
+  }
+
+  if (msg.includes("ทักษะ")) {
+    return "HTML, CSS, JavaScript, GitHub, การสร้าง chatbot เบื้องต้น รวมถึงเริ่มเรียนรู้เรื่องการเชื่อม API และฝัง AI";
+  }
+
+  if (msg.includes("สถานศึกษา")) {
+    return "ผมเรียนรู้ด้วยตัวเองจากแหล่งออนไลน์ต่าง ๆ และมีความตั้งใจจะพัฒนาตัวเองอย่างต่อเนื่อง เพื่อก้าวเข้าสู่งานด้านเทคโนโลยีครับ";
+  }
+
+  return "ขออภัยครับ ยังไม่เข้าใจคำนี้ ลองถามว่า 'แนะนำตัว' หรือเลือกหัวข้อจากปุ่มได้เลยครับ 😊";
 }
 // ทำให้ปุ่มแนะนำตัวทำงาน
 document.getElementById("introBtn").addEventListener("click", function() {
@@ -38,3 +45,5 @@ document.getElementById("introBtn").addEventListener("click", function() {
   chatlog.innerHTML += `<div><strong>บอท:</strong> ${botReply}</div>`;
   chatlog.scrollTop = chatlog.scrollHeight;
 });
+}
+
