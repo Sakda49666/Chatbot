@@ -45,5 +45,10 @@ document.getElementById("introBtn").addEventListener("click", function() {
   chatlog.innerHTML += `<div><strong>บอท:</strong> ${botReply}</div>`;
   chatlog.scrollTop = chatlog.scrollHeight;
 });
+function simulateMessage(text) {
+  const input = document.getElementById("userInput");
+  input.value = text;
+  sendMessage();
+}
 }
 
