@@ -1,0 +1,21 @@
+function sendMessage() {
+  const input = document.getElementById("userInput");
+  const chatlog = document.getElementById("chatlog");
+  const userText = input.value.trim();
+
+  if (userText === "") return;
+
+  const botReply = getBotReply(userText);
+
+  chatlog.innerHTML += `<div><strong>คุณ:</strong> ${userText}</div>`;
+  chatlog.innerHTML += `<div><strong>บอท:</strong> ${botReply}</div>`;
+  input.value = "";
+  chatlog.scrollTop = chatlog.scrollHeight;
+}
+
+function getBotReply(message) {
+  const msg = message.toLowerCase();
+  if (msg.includes("สวัสดี")) return "สวัสดีค่ะ! 😊";
+  if (msg.includes("ชื่ออะไร")) return "ฉันชื่อบอทคู่ใจของคุณไงล่ะ!";
+  return "ฉันยังไม่เข้าใจคำนี้ แต่กำลังเรียนรู้อยู่นะ~";
+}
