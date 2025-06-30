@@ -30,3 +30,11 @@ function getBotReply(message) {
 
   return "ขอโทษครับ ผมยังไม่เข้าใจคำนี้ ลองพิมพ์ว่า 'แนะนำตัว', 'ชื่อ', หรือ 'ทักษะ' ได้เลยครับ!";
 }
+// ทำให้ปุ่มแนะนำตัวทำงาน
+document.getElementById("introBtn").addEventListener("click", function() {
+  const chatlog = document.getElementById("chatlog");
+  const botReply = getBotReply("แนะนำตัว");
+  chatlog.innerHTML += `<div><strong>คุณ:</strong> แนะนำตัว</div>`;
+  chatlog.innerHTML += `<div><strong>บอท:</strong> ${botReply}</div>`;
+  chatlog.scrollTop = chatlog.scrollHeight;
+});
