@@ -1,76 +1,49 @@
-function sendMessage() {
-  const input = document.getElementById("userInput");
-  const chatlog = document.getElementById("chatlog");
-  const userText = input.value.trim();
-  if (userText === "") return;
-
-  const botReply = getBotReply(userText);
-
-  chatlog.innerHTML += `<div><strong>คุณ:</strong> ${userText}</div>`;
-  chatlog.innerHTML += `<div><strong>บอท:</strong> ${botReply}</div>`;
-  input.value = "";
-  chatlog.scrollTop = chatlog.scrollHeight;
-
-  // ทำให้ปุ่มในข้อความของบอทคลิกได้หลังจาก DOM โหลด
-  setTimeout(() => {
-    const buttons = chatlog.querySelectorAll("button");
-    buttons.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        simulateMessage(btn.textContent);
-      });
-    });
-  }, 100);
+body {
+  font-family: sans-serif;
+  background: #f4f6f8;
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
 }
 
-function getBotReply(message) {
-  const msg = message.toLowerCase();
-
-  if (msg.includes("แนะนำตัว") || msg.includes("แนะนำตัวหน่อย") || msg.includes("ช่วยแนะนำตัว") || msg.includes("อยากรู้จัก")) {
-    return `สวัสดีครับ ผมชื่อศักดา เป็นนักพัฒนาเว็บสาย Frontend ที่ชื่นชอบการสร้างเครื่องมือช่วยเหลือผู้คนครับ 👨‍💻<br><br>
-    สนใจอยากทราบอะไรเพิ่มเติมเกี่ยวกับผมไหม?<br>
-    <button>ประสบการณ์</button>
-    <button>ทักษะ</button>
-    <button>สถานศึกษา</button>`;
-  }
-
-  if (msg.includes("ประสบการณ์")) {
-    return "ผมเคยสร้างเว็บทำอาหาร, เว็บช่วยแนะนำสูตร, บอทแชทด้วย HTML/CSS/JS และกำลังเรียนรู้ GitHub กับ AI chatbot ครับ";
-  }
-
-  if (msg.includes("ทักษะ")) {
-    return "HTML, CSS, JavaScript, GitHub, พื้นฐานการสร้างบอท และเริ่มศึกษา API กับ AI ครับ";
-  }
-
-  if (msg.includes("สถานศึกษา")) {
-    return "ผมเรียนรู้ด้วยตัวเองจากแหล่งออนไลน์ต่าง ๆ เช่น YouTube, แพลตฟอร์มสอนเขียนโค้ด และกำลังต่อยอดความรู้ผ่านโปรเจกต์จริง";
-  }
-
-  if (msg.includes("ชื่อ") || msg.includes("คุณคือใคร")) {
-    return "ผมชื่อศักดา เป็นบอทแนะนำตัวที่เขียนขึ้นด้วย HTML, CSS, JavaScript ครับ 😊";
-  }
-
-  return "ขอโทษครับ ผมยังไม่เข้าใจคำนี้ ลองถามว่า 'แนะนำตัว' หรือคลิกปุ่มดูได้นะครับ";
+.chatbox {
+  width: 460px;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
-document.getElementById("introBtn").addEventListener("click", function() {
-  const chatlog = document.getElementById("chatlog");
-  const botReply = getBotReply("แนะนำตัว");
-  chatlog.innerHTML += `<div><strong>คุณ:</strong> แนะนำตัว</div>`;
-  chatlog.innerHTML += `<div><strong>บอท:</strong> ${botReply}</div>`;
-  chatlog.scrollTop = chatlog.scrollHeight;
+h2 {
+  text-align: center;
+  color: #007acc;
+}
 
-  setTimeout(() => {
-    const buttons = chatlog.querySelectorAll("button");
-    buttons.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        simulateMessage(btn.textContent);
-      });
-    });
-  }, 100);
-});
+#chatlog {
+  height: 300px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin: 12px 0;
+  line-height: 1.6;
+  font-size: 15px;
+}
 
-function simulateMessage(text) {
-  const input = document.getElementById("userInput");
-  input.value = text;
-  sendMessage();
+input[type="text"] {
+  width: 70%;
+  padding: 10px;
+}
+
+button {
+  padding: 10px 14px;
+  margin-left: 5px;
+  background-color: #007acc;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+button:hover {
+  background-color: #005f99;
 }
